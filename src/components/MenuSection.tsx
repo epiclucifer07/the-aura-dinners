@@ -66,27 +66,29 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="max-w-2xl">
-            <span className="text-xs uppercase tracking-[0.25em] text-red-700 font-semibold block mb-3">
+            <span className="text-xs uppercase tracking-[0.25em] text-red-700 font-bold block mb-3">
               Degustation & À La Carte
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-neutral-900 leading-tight">
-              Culinary Artistry Across Continents
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 leading-tight">
+              <strong className="font-bold text-neutral-950">Culinary Artistry</strong>{' '}
+              <span className="italic font-normal text-red-900">Across Continents</span>
             </h2>
             <p className="mt-3 text-neutral-600 text-sm sm:text-base leading-relaxed">
-              Featuring our celebrated Indian avant-garde dishes alongside global fine dining masterpieces, 
-              curated for our discerning patrons worldwide.
+              Featuring our celebrated <strong className="font-semibold text-neutral-900">Indian avant-garde creations</strong> alongside 
+              <em className="italic font-serif text-neutral-800"> global fine dining masterpieces</em>, 
+              curated for our patrons worldwide.
             </p>
           </div>
 
           {/* Currency Switcher on Menu */}
           <div className="flex items-center gap-3 bg-neutral-50 border border-neutral-200 rounded-lg p-2.5 self-start md:self-auto">
-            <span className="text-xs text-neutral-500 font-medium">Currency:</span>
+            <span className="text-xs text-neutral-500 font-bold uppercase tracking-wider">Currency:</span>
             <div className="flex items-center gap-1">
               {(Object.keys(CURRENCY_RATES) as Currency[]).map((curr) => (
                 <button
                   key={curr}
                   onClick={() => onCurrencyChange(curr)}
-                  className={`px-2.5 py-1 text-xs font-semibold rounded transition-colors ${
+                  className={`px-2.5 py-1 text-xs font-bold rounded transition-colors ${
                     selectedCurrency === curr
                       ? 'bg-neutral-900 text-white'
                       : 'text-neutral-600 hover:text-neutral-900'
@@ -198,21 +200,21 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
                     {/* Unboxed Metadata Line (Zero-Pill Discipline) */}
                     <div className="flex items-center justify-between text-xs text-neutral-500 mb-2">
                       <div className="flex items-center gap-1.5 truncate">
-                        <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-400">
+                        <strong className="font-mono text-[11px] uppercase tracking-wider text-neutral-700 font-semibold">
                           {dish.origin}
-                        </span>
+                        </strong>
                         {dish.nativeTitle && (
                           <>
                             <span aria-hidden="true" className="text-neutral-300">·</span>
-                            <span className="italic text-neutral-500 font-serif">{dish.nativeTitle}</span>
+                            <em className="italic text-neutral-600 font-serif text-xs">{dish.nativeTitle}</em>
                           </>
                         )}
                       </div>
 
                       {/* Dietary text indicators */}
                       {dish.dietary.includes('chef-signature') && (
-                        <span className="text-[11px] font-semibold text-red-700 shrink-0">
-                          Chef's Star
+                        <span className="text-[11px] font-bold text-red-700 shrink-0 uppercase tracking-wider">
+                          ★ Chef's Star
                         </span>
                       )}
                     </div>
@@ -220,9 +222,9 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
                     {/* Dish Title & Price Baseline */}
                     <div className="flex items-start justify-between gap-3 mb-3">
                       <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 group-hover:text-red-800 transition-colors leading-snug">
-                        {dish.name}
+                        <strong className="font-bold">{dish.name}</strong>
                       </h3>
-                      <span className="font-mono text-base font-semibold text-neutral-900 tabular-nums shrink-0 mt-0.5">
+                      <span className="font-mono text-base font-bold text-neutral-950 tabular-nums shrink-0 mt-0.5">
                         {formatPrice(dish.priceUSD)}
                       </span>
                     </div>
@@ -234,10 +236,10 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
 
                     {/* Sommelier Pairing note */}
                     <div className="mt-4 pt-3 border-t border-neutral-100 flex items-start gap-2 text-[11px] text-neutral-500">
-                      <Wine className="w-3.5 h-3.5 text-neutral-400 shrink-0 mt-0.5" />
+                      <Wine className="w-3.5 h-3.5 text-red-700 shrink-0 mt-0.5" />
                       <span className="leading-tight">
-                        <strong className="font-medium text-neutral-700">Pairing: </strong>
-                        {dish.pairingNote}
+                        <strong className="font-bold text-neutral-900">Sommelier Pairing: </strong>
+                        <em className="italic font-serif text-neutral-700">{dish.pairingNote}</em>
                       </span>
                     </div>
                   </div>

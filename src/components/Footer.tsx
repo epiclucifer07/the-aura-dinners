@@ -29,23 +29,29 @@ export const Footer: React.FC<FooterProps> = ({ onOpenReservation, onOpenBooking
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
             <div>
-              <span className="font-serif text-3xl tracking-[0.25em] font-medium text-neutral-900 block">
-                AURA
-              </span>
-              <span className="text-[10px] tracking-[0.35em] text-neutral-400 uppercase font-sans">
-                Dining · Contemporary Haute Cuisine
+              <div className="flex items-baseline gap-2">
+                <span className="font-serif text-3xl tracking-[0.22em] font-bold text-neutral-950 block">
+                  AURA
+                </span>
+                <span className="font-serif text-lg italic text-neutral-500 font-normal">
+                  Dining
+                </span>
+              </div>
+              <span className="text-[10px] tracking-[0.35em] text-neutral-400 uppercase font-sans font-bold block mt-0.5">
+                Contemporary Haute Cuisine
               </span>
             </div>
             
             <p className="text-neutral-500 text-xs leading-relaxed max-w-sm font-light">
-              Harmonizing the ancestral culinary depth of Vedic India with avant-garde global technique. 
-              An unhurried sanctuary of flavor, craft, and architectural stillness.
+              Harmonizing the <strong className="font-semibold text-neutral-800">ancestral culinary depth</strong> of <em className="italic font-serif text-neutral-700">Vedic India</em> with{' '}
+              <strong className="font-semibold text-neutral-800">avant-garde global technique</strong>. 
+              An unhurried sanctuary of <em className="italic font-serif text-neutral-700">flavor, craft</em>, and architectural stillness.
             </p>
 
             <div className="pt-2">
               <button
                 onClick={() => onOpenReservation()}
-                className="px-6 py-2.5 bg-red-700 hover:bg-red-800 text-white font-semibold text-xs tracking-wider uppercase rounded shadow-xs transition-colors"
+                className="px-6 py-2.5 bg-red-700 hover:bg-red-800 text-white font-bold text-xs tracking-wider uppercase rounded shadow-xs transition-colors"
               >
                 Reserve a Table
               </button>

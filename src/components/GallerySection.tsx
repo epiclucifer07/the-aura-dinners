@@ -46,15 +46,16 @@ export const GallerySection: React.FC = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="max-w-2xl">
-            <span className="text-xs uppercase tracking-[0.25em] text-red-700 font-semibold block mb-3">
+            <span className="text-xs uppercase tracking-[0.25em] text-red-700 font-bold block mb-3">
               Visual Narrative
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-neutral-900 leading-tight">
-              Quiet Spaces. Evocative Plating.
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 leading-tight">
+              <strong className="font-bold text-neutral-950">Quiet Spaces.</strong>{' '}
+              <span className="italic font-normal text-red-900">Evocative Plating.</span>
             </h2>
             <p className="mt-3 text-neutral-600 text-sm sm:text-base leading-relaxed">
-              A curated photographic record of Aura's minimalist sanctuaries, 
-              intricate Indian flavor architecture, and bespoke crystal mixology.
+              A curated photographic record of Aura's <strong className="font-semibold text-neutral-900">minimalist sanctuaries</strong>, 
+              intricate <em className="italic font-serif text-neutral-800">Indian flavor architecture</em>, and bespoke crystal mixology.
             </p>
           </div>
 
@@ -64,7 +65,7 @@ export const GallerySection: React.FC = () => {
               <button
                 key={c.key}
                 onClick={() => setActiveCategory(c.key)}
-                className={`px-3.5 py-1.5 text-xs uppercase tracking-wider rounded font-medium transition-colors whitespace-nowrap ${
+                className={`px-3.5 py-1.5 text-xs uppercase tracking-wider rounded font-bold transition-colors whitespace-nowrap ${
                   activeCategory === c.key
                     ? 'bg-neutral-900 text-white'
                     : 'bg-white text-neutral-600 hover:text-neutral-900 border border-neutral-200'

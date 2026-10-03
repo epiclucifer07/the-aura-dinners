@@ -18,29 +18,31 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation, onExploreMenu }) 
         
         {/* Editorial Brand Kicker */}
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-neutral-500 mb-4">
+          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-neutral-500 mb-4 font-medium">
             <span className="w-1.5 h-1.5 rounded-full bg-red-700" />
-            <span>Contemporary Haute Cuisine</span>
+            <strong className="font-bold text-neutral-800">Contemporary Haute Cuisine</strong>
             <span className="text-neutral-300">/</span>
-            <span>8 Global Sanctuaries</span>
+            <span className="italic lowercase tracking-normal text-neutral-500 font-serif text-sm">18 global sanctuaries</span>
           </div>
 
-          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-light text-neutral-950 tracking-tight leading-[1.08] text-balance">
-            Ancient Spice Alchemy. <br />
-            <span className="italic font-normal">Global Avant-Garde.</span>
+          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl text-neutral-950 tracking-tight leading-[1.08] text-balance">
+            <strong className="font-bold text-neutral-950">Ancient Spice Alchemy.</strong> <br />
+            <span className="italic font-normal text-red-900">Global Avant-Garde.</span>
           </h1>
 
           <p className="mt-6 text-base sm:text-lg text-neutral-600 font-light leading-relaxed max-w-2xl text-balance">
-            Aura Dining unites the ancestral depth of Vedic Indian flavor wisdom with 
-            the uncompromising precision of modern French and Japanese gastronomy. 
-            Prepared across 8 cultural capitals of the world.
+            Aura Dining unites the <em className="italic font-serif text-neutral-800 text-lg">ancestral depth</em> of{' '}
+            <strong className="font-semibold text-neutral-900">Vedic Indian flavor wisdom</strong> with the{' '}
+            <em className="italic font-serif text-neutral-800 text-lg">uncompromising precision</em> of{' '}
+            <strong className="font-semibold text-neutral-900">modern French & Japanese gastronomy</strong>, 
+            orchestrated across <strong className="font-semibold text-neutral-900">18 iconic world destinations</strong>.
           </p>
 
           {/* Action Button Row: Red Main Button + Crisp Secondary */}
           <div className="mt-8 flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
             <button
               onClick={() => onOpenReservation()}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-red-700 hover:bg-red-800 text-white font-medium text-xs tracking-widest uppercase rounded shadow-sm hover:shadow transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-red-700 hover:bg-red-800 text-white font-bold text-xs tracking-widest uppercase rounded shadow-sm hover:shadow transition-all"
             >
               <span>Reserve a Table</span>
               <ArrowRight className="w-4 h-4" />
@@ -48,9 +50,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation, onExploreMenu }) 
 
             <button
               onClick={onExploreMenu}
-              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 bg-white hover:bg-neutral-50 text-neutral-800 border border-neutral-300 hover:border-neutral-400 font-medium text-xs tracking-widest uppercase rounded transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 bg-white hover:bg-neutral-50 text-neutral-900 border border-neutral-300 hover:border-neutral-400 font-bold text-xs tracking-widest uppercase rounded transition-colors"
             >
-              Explore Degustation Menu
+              <span>Explore <em className="italic font-serif lowercase text-sm font-normal">Degustation</em> Menu</span>
             </button>
           </div>
         </div>
@@ -70,21 +72,22 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation, onExploreMenu }) 
             {/* In-Frame Context Bar */}
             <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex flex-col sm:flex-row sm:items-end justify-between text-white gap-3">
               <div>
-                <span className="text-[10px] tracking-[0.2em] uppercase text-neutral-300 block">
+                <span className="text-[10px] tracking-[0.2em] uppercase text-neutral-300 block font-semibold">
                   The Experience
                 </span>
-                <p className="font-serif text-lg sm:text-2xl text-white font-light">
-                  Understated minimalism. Boundless culinary poetry.
+                <p className="font-serif text-lg sm:text-2xl text-white">
+                  <strong className="font-bold text-white">Understated minimalism.</strong>{' '}
+                  <span className="italic font-light text-neutral-200">Boundless culinary poetry.</span>
                 </p>
               </div>
 
               <div className="flex items-center gap-4 text-xs text-neutral-200">
-                <span className="flex items-center gap-1.5">
+                <span className="flex items-center gap-1.5 font-medium">
                   <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                  Reservations Open (Oct – Dec 2026)
+                  <span>Reservations Open: <strong className="font-bold text-white">Oct – Dec 2026</strong></span>
                 </span>
                 <span className="hidden md:inline text-neutral-400">|</span>
-                <span className="hidden md:inline text-neutral-200">
+                <span className="hidden md:inline text-neutral-200 font-serif italic text-sm">
                   Michelin Guide Recommended
                 </span>
               </div>

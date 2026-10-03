@@ -9,11 +9,12 @@ export const ReviewsSection: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs uppercase tracking-[0.25em] text-red-700 font-semibold block mb-3">
+          <span className="text-xs uppercase tracking-[0.25em] text-red-700 font-bold block mb-3">
             Critical Reception
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-neutral-900 leading-tight">
-            Acclaim Across the Capitals
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 leading-tight">
+            <strong className="font-bold text-neutral-950">Acclaim Across</strong>{' '}
+            <span className="italic font-normal text-red-900">the Capitals</span>
           </h2>
           <p className="mt-3 text-neutral-600 text-sm sm:text-base leading-relaxed">
             International honors and quiet praise from the world's most discerning culinary observers.
@@ -34,15 +35,15 @@ export const ReviewsSection: React.FC = () => {
                   ))}
                 </div>
 
-                <blockquote className="font-serif text-lg sm:text-xl text-neutral-800 font-light leading-snug italic">
-                  "{review.quote}"
+                <blockquote className="font-serif text-lg sm:text-xl text-neutral-900 leading-snug">
+                  <em className="italic font-normal">"{review.quote}"</em>
                 </blockquote>
               </div>
 
               <div className="mt-8 pt-4 border-t border-neutral-200 text-xs">
-                <div className="font-semibold text-neutral-900">{review.author}</div>
+                <div className="font-bold text-neutral-950 text-sm">{review.author}</div>
                 <div className="text-neutral-500 font-mono text-[11px] mt-0.5">
-                  {review.publication} · {review.location}
+                  <em className="italic font-serif text-neutral-700">{review.publication}</em> · <strong className="font-semibold text-neutral-800">{review.location}</strong>
                 </div>
               </div>
             </div>

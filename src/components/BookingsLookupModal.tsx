@@ -31,12 +31,12 @@ export const BookingsLookupModal: React.FC<BookingsLookupModalProps> = ({
         {/* Header */}
         <div className="px-6 py-4 border-b border-neutral-100 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="font-serif text-xl tracking-wider text-neutral-900 font-medium">
+            <span className="font-serif text-xl tracking-wider text-neutral-900 font-bold">
               AURA
             </span>
             <span className="text-neutral-300">/</span>
-            <span className="text-xs uppercase tracking-widest text-neutral-500 font-medium">
-              My Reservations ({bookings.length})
+            <span className="text-xs uppercase tracking-widest text-neutral-500 font-bold">
+              My Reservations (<strong className="text-red-700">{bookings.length}</strong>)
             </span>
           </div>
 
@@ -54,7 +54,9 @@ export const BookingsLookupModal: React.FC<BookingsLookupModalProps> = ({
           {bookings.length === 0 ? (
             <div className="text-center py-12">
               <Calendar className="w-10 h-10 text-neutral-300 mx-auto mb-3" />
-              <h4 className="font-serif text-xl text-neutral-800">No Active Reservations Found</h4>
+              <h4 className="font-serif text-xl text-neutral-800">
+                <strong className="font-bold">No Active Reservations Found</strong>
+              </h4>
               <p className="text-xs text-neutral-500 mt-1 max-w-xs mx-auto">
                 You currently have no booked tables recorded on this browser session.
               </p>
@@ -63,7 +65,7 @@ export const BookingsLookupModal: React.FC<BookingsLookupModalProps> = ({
                   onClose();
                   onOpenNewReservation();
                 }}
-                className="mt-5 px-6 py-2.5 bg-red-700 hover:bg-red-800 text-white text-xs font-semibold uppercase tracking-wider rounded transition-colors"
+                className="mt-5 px-6 py-2.5 bg-red-700 hover:bg-red-800 text-white text-xs font-bold uppercase tracking-wider rounded transition-colors"
               >
                 Reserve a Table Now
               </button>
@@ -77,14 +79,14 @@ export const BookingsLookupModal: React.FC<BookingsLookupModalProps> = ({
                 >
                   <div className="flex items-start justify-between">
                     <div>
-                      <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 block">
-                        Ref: {b.referenceNo}
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 block font-bold">
+                        Ref: <strong className="text-neutral-700">{b.referenceNo}</strong>
                       </span>
-                      <h4 className="font-serif text-lg text-neutral-900 font-medium">
-                        Aura {b.cityName}
+                      <h4 className="font-serif text-lg text-neutral-900">
+                        <span className="font-light">Aura</span> <strong className="font-bold">{b.cityName}</strong>
                       </h4>
                     </div>
-                    <span className="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-[11px] font-semibold rounded">
+                    <span className="px-2 py-0.5 bg-emerald-50 text-emerald-800 text-[11px] font-bold rounded">
                       {b.status}
                     </span>
                   </div>
@@ -92,17 +94,17 @@ export const BookingsLookupModal: React.FC<BookingsLookupModalProps> = ({
                   <div className="grid grid-cols-2 gap-2 text-xs text-neutral-600">
                     <div className="flex items-center gap-1.5">
                       <Calendar className="w-3.5 h-3.5 text-neutral-400" />
-                      <span>{b.date} · {b.timeSlot}</span>
+                      <span><strong className="text-neutral-800 font-semibold">{b.date}</strong> · <em className="italic">{b.timeSlot}</em></span>
                     </div>
 
                     <div className="flex items-center gap-1.5">
                       <Users className="w-3.5 h-3.5 text-neutral-400" />
-                      <span>{b.guests} Guests · {b.occasion}</span>
+                      <span><strong className="text-neutral-800 font-semibold">{b.guests} Guests</strong> · <em className="italic font-serif">{b.occasion}</em></span>
                     </div>
                   </div>
 
                   <div className="text-[11px] text-neutral-500 pt-2 border-t border-neutral-200 flex items-center justify-between">
-                    <span>Reserved for: <strong className="text-neutral-800">{b.guestName}</strong></span>
+                    <span>Reserved for: <strong className="text-neutral-900 font-bold">{b.guestName}</strong></span>
                     
                     <button
                       onClick={() => {

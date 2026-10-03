@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { AuthProvider } from './context/AuthContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Philosophy } from './components/Philosophy';
@@ -10,14 +11,17 @@ import { Footer } from './components/Footer';
 import { ReservationModal } from './components/ReservationModal';
 import { BookingsLookupModal } from './components/BookingsLookupModal';
 import { TastingPlanDrawer } from './components/TastingPlanDrawer';
+import { PhoneVerificationModal } from './components/PhoneVerificationModal';
 import { MenuItem, Reservation, Currency } from './types/restaurant';
 
-export default function App() {
+function AppContent() {
   // Modal / Drawer visibility states
   const [reservationModalOpen, setReservationModalOpen] = useState(false);
   const [preselectedCityId, setPreselectedCityId] = useState<string | undefined>(undefined);
   const [bookingsModalOpen, setBookingsModalOpen] = useState(false);
   const [tastingPlanOpen, setTastingPlanOpen] = useState(false);
+  const [phoneVerificationModalOpen, setPhoneVerificationModalOpen] = useState(false);
+  const [phoneToVerify, setPhoneToVerify] = useState<string>('');
 
   // Global settings
   const [selectedCurrency, setSelectedCurrency] = useState<Currency>('USD');
@@ -101,6 +105,11 @@ export default function App() {
     }
   };
 
+  const handleTriggerPhoneVerification = (phone = '') => {
+    setPhoneToVerify(phone);
+    setPhoneVerificationModalOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-white text-neutral-900 flex flex-col font-sans selection:bg-red-800 selection:text-white">
       {/* Navigation Bar */}
@@ -108,6 +117,7 @@ export default function App() {
         onOpenReservation={handleOpenReservation}
         onOpenBookings={() => setBookingsModalOpen(true)}
         onOpenTastingPlan={() => setTastingPlanOpen(true)}
+        onOpenPhoneVerification={() => handleTriggerPhoneVerification()}
         savedDishCount={savedDishes.length}
         bookingsCount={bookings.length}
         selectedCurrency={selectedCurrency}
@@ -152,6 +162,7 @@ export default function App() {
         onClose={() => setReservationModalOpen(false)}
         preselectedCityId={preselectedCityId}
         onReservationCreated={handleReservationCreated}
+        onRequestPhoneVerification={(phone) => handleTriggerPhoneVerification(phone)}
       />
 
       {/* Bookings Lookup & Management Modal */}
@@ -178,7 +189,26 @@ export default function App() {
           setTastingPlanOpen(false);
           handleOpenReservation();
         }}
+        onRequestPhoneVerification={() => handleTriggerPhoneVerification()}
+      />
+
+      {/* Security Phone Verification Modal */}
+      <PhoneVerificationModal
+        isOpen={phoneVerificationModalOpen}
+        onClose={() => setPhoneVerificationModalOpen(false)}
+        initialPhone={phoneToVerify}
+        onVerified={(verified) => {
+          setPhoneToVerify(verified);
+        }}
       />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 }
