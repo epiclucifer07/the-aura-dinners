@@ -1,0 +1,6 @@
+{
+  "name": "Aura Dining",
+  "description": "Minimalist fine dining restaurant celebrating avant-garde Indian heritage and global gastronomy across iconic cities worldwide.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
